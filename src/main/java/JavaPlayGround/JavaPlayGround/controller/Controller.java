@@ -45,6 +45,9 @@ public class Controller {
         return playGround.getRecordsToUpdate(recToUpdate,userOrGroupId,userEmail,objectName,action);
     }
 
+    /**
+     * it is for POC
+     */
     @RequestMapping(value = "/javaplayground/getEmployeeDetails", method = RequestMethod.GET)
     public Object getEmployee(
             @RequestParam String employeeId) throws IOException {
