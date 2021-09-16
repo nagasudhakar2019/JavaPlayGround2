@@ -47,6 +47,7 @@ public class Controller {
 
     /**
      * it is for POC
+     * to check on the test scripts and integration scripts
      */
     @RequestMapping(value = "/javaplayground/getEmployeeDetails", method = RequestMethod.GET)
     public Object getEmployee(
