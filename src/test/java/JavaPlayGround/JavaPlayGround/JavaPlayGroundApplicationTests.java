@@ -1,7 +1,6 @@
 package JavaPlayGround.JavaPlayGround;
 
 import JavaPlayGround.JavaPlayGround.service.IntegrationTestsPOC;
-import com.sun.tools.javac.util.Assert;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
