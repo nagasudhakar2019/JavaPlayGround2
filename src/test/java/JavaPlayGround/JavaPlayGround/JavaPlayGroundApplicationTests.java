@@ -1,6 +1,7 @@
 package JavaPlayGround.JavaPlayGround;
 
 import JavaPlayGround.JavaPlayGround.service.IntegrationTestsPOC;
+import com.sun.tools.javac.util.Assert;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -46,7 +47,6 @@ class JavaPlayGroundApplicationTests {
 //    }
     @Test
     public void testWelcomeMethod(){
-        //ResponseEntity responseEntity ;
         MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
         params.add("applicantName", "Thejus");
         String queryApiUrl = "http://localhost:" + port + "/javaplayground/welcomenote";
