@@ -3,6 +3,7 @@ package JavaPlayGround.JavaPlayGround.controller;
 import JavaPlayGround.JavaPlayGround.model.RecordPojo;
 import JavaPlayGround.JavaPlayGround.model.ResponsePOJO;
 import JavaPlayGround.JavaPlayGround.service.IEmployeeService;
+import JavaPlayGround.JavaPlayGround.service.IntegrationTestsPOC;
 import JavaPlayGround.JavaPlayGround.service.PlayGround;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -45,14 +46,22 @@ public class Controller {
         return playGround.getRecordsToUpdate(recToUpdate,userOrGroupId,userEmail,objectName,action);
     }
 
-    /**
-     * it is for POC
-     * to check on the test scripts and integration scripts
-     */
-    @RequestMapping(value = "/javaplayground/getEmployeeDetails", method = RequestMethod.GET)
-    public Object getEmployee(
-            @RequestParam String employeeId) throws IOException {
-        return iEmployeeService.getEmployee(employeeId);
+//    /**
+//     * it is for POC
+//     * to check on the test scripts and integration scripts
+//     */
+//    @RequestMapping(value = "/javaplayground/getEmployeeDetails", method = RequestMethod.GET)
+//    public Object getEmployee(
+//            @RequestParam String employeeId) throws IOException {
+//        return iEmployeeService.getEmployee(employeeId);
+//    }
+
+    @Autowired
+    IntegrationTestsPOC integrationTestsPOC;
+    @RequestMapping(value = "/javaplayground/welcomenote", method = RequestMethod.GET)
+    public Object getWelcomeNote(
+            @RequestParam String applicantName) {
+        return integrationTestsPOC.welcomeMethod(applicantName);
     }
 
 }
