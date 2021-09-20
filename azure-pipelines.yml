@@ -10,12 +10,13 @@ pool:
   vmImage: ubuntu-latest
 
 variables:
-  AZURE_VAR1: $(AZURE_VAR1)
+  AZURE_VAR1: $(PIPELINEVAR1)
 
 steps:
   - bash: |
-      echo $(AZURE_VAR1)
       echo $AZURE_VAR1
+      echo $(AZURE_VAR1)
+      echo $PIPELINEVAR1
 #  - task: Gradle@2
 #    inputs:
 #      workingDirectory: ''
