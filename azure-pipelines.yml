@@ -13,9 +13,9 @@ variables:
   AZURE_VAR1: $(AZURE_VAR1)
 
 steps:
-  - script: |
+  - bash: |
       echo $(AZURE_VAR1)
-      echo ${{ variables.AZURE_VAR1 }}
+      echo $AZURE_VAR1
 #  - task: Gradle@2
 #    inputs:
 #      workingDirectory: ''
