@@ -7,13 +7,19 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Profile;
 
 @TestConfiguration
-//@Profile("test")
 public class IntegrationTestConfiguration {
     @Value("${applicationName}")
     private String appName;
+    @Value("${envTestVar}")
+    private String testVarValue;
+
     @Bean("appName")
-    //@Primary
     public String getAppName(){
         return appName;
+    }
+
+    @Bean("testVar")
+    public String getEnvTestVar(){
+        return testVarValue;
     }
 }
