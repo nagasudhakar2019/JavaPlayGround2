@@ -10,16 +10,13 @@ pool:
   vmImage: ubuntu-latest
 
 variables:
-  AZURE_CLIENT_ID: abc
+  - name: one
+    value: onevalue
 
 steps:
-  - powershell: |
-    env:
-      AZURE_CLIENT_ID: $(AZURE_CLIENT_ID) # the recommended way to map to an env variable
-  - bash: |
-    env:
-      AZURE_CLIENT_ID: $(AZURE_CLIENT_ID) # the recommended way to map to an env variable
-
+  - script: |
+      echo ${{ variables.one }}
+      echo $(one)
   - task: Gradle@2
     inputs:
       workingDirectory: ''
