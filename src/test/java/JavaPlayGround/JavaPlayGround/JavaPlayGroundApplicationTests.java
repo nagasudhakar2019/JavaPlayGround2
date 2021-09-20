@@ -50,14 +50,17 @@ class JavaPlayGroundApplicationTests {
 //    }
     @Test
     public void testWelcomeMethod() throws Exception {
-        MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
-        params.add("applicantName", appName);
-        System.out.println("testVar is : "+ testVar);
-        String queryApiUrl = "http://localhost:" + port + "/javaplayground/welcomenote";
-        String urlQuery = buildUriString(queryApiUrl, params);
-        HttpEntity<String> requestEntity = new HttpEntity<>(null, null);
-        ResponseEntity<String> responseEntity = testRestTemplate.exchange(urlQuery, HttpMethod.GET, requestEntity, String.class);
-        System.out.println(responseEntity.getBody());
+        System.out.println("AZURE_CLIENT_ID is : "+ System.getenv("AZURE_CLIENT_ID"));
+        System.out.println("Env is : "+ System.getenv());
+
+//        MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
+//        params.add("applicantName", appName);
+//        System.out.println("testVar is : "+ testVar);
+//        String queryApiUrl = "http://localhost:" + port + "/javaplayground/welcomenote";
+//        String urlQuery = buildUriString(queryApiUrl, params);
+//        HttpEntity<String> requestEntity = new HttpEntity<>(null, null);
+//        ResponseEntity<String> responseEntity = testRestTemplate.exchange(urlQuery, HttpMethod.GET, requestEntity, String.class);
+//        System.out.println(responseEntity.getBody());
         //throw new Exception("test");
     }
 
