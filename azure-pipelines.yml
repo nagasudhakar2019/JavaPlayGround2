@@ -10,33 +10,17 @@ pool:
   vmImage: ubuntu-latest
 
 variables:
-  - name: one
-    value: onevalue
+  AZURE_VAR1: $(PIPELINEVAR1)
 
-steps:
-  - script: |
-      echo ${{ variables.one }}
-      echo $(one)
-  - bash: |
-    env:
-      AZURE_CLIENT_ID : $(PIPELINEVAR1)
-    displayName: setting env variables for bash
-  - powershell: |
-    env:
-      AZURE_CLIENT_ID : ${env:PIPELINEVAR1}
-    displayName: setting env variables for powershell
-  - script: |
-      echo $(PIPELINEVAR1)
-    displayName: displaying azure client id $(AZURE_CLIENT_ID)
-
-#  - task: Gradle@2
-#    inputs:
-#      workingDirectory: ''
-#      gradleWrapperFile: 'gradlew'
-#      gradleOptions: '-Xmx3072m'
-#      javaHomeOption: 'JDKVersion'
-#      jdkVersionOption: '1.8'
-#      jdkArchitectureOption: 'x64'
-#      publishJUnitResults: true
-#      testResultsFiles: '**/TEST-*.xml'
-#      tasks: 'build'
+  - task: Gradle@2
+    inputs:
+      AZURE_VAR1: $(AZURE_VAR1)
+      workingDirectory: ''
+      gradleWrapperFile: 'gradlew'
+      gradleOptions: '-Xmx3072m'
+      javaHomeOption: 'JDKVersion'
+      jdkVersionOption: '1.8'
+      jdkArchitectureOption: 'x64'
+      publishJUnitResults: true
+      testResultsFiles: '**/TEST-*.xml'
+      tasks: 'build'
