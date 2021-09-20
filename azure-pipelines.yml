@@ -19,12 +19,15 @@ steps:
       echo $(one)
   - bash: |
     env:
-      AZURE_CLIENT_ID: $(one)
+      export AZURE_CLIENT_ID = $(one)
     displayName: setting env variables for bash
   - powershell: |
     env:
-      AZURE_CLIENT_ID: $(one)
+      export AZURE_CLIENT_ID = $(one)
     displayName: setting env variables for powershell
+  - script: |
+      echo $AZURE_CLIENT_ID
+    displayName: displaying azure client id
 
   - task: Gradle@2
     inputs:
