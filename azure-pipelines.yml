@@ -17,6 +17,15 @@ steps:
   - script: |
       echo ${{ variables.one }}
       echo $(one)
+  - bash: |
+    env:
+      - AZURE_CLIENT_ID: $(one)
+    displayName: setting env variables for bash
+  - powershell: |
+    env:
+      - AZURE_CLIENT_ID: $(one)
+    displayName: setting env variables for powershell
+
   - task: Gradle@2
     inputs:
       workingDirectory: ''
