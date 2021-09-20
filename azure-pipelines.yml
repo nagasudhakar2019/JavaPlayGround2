@@ -4,20 +4,30 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/java
 
 trigger:
-- master
+  - master
 
 pool:
   vmImage: ubuntu-latest
 
+variables:
+  AZURE_CLIENT_ID: abc
+
 steps:
-- task: Gradle@2
-  inputs:
-    workingDirectory: ''
-    gradleWrapperFile: 'gradlew'
-    gradleOptions: '-Xmx3072m'
-    javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '1.8'
-    jdkArchitectureOption: 'x64'
-    publishJUnitResults: true
-    testResultsFiles: '**/TEST-*.xml'
-    tasks: 'build'
+  - powershell: |
+    env:
+      AZURE_CLIENT_ID: $(AZURE_CLIENT_ID) # the recommended way to map to an env variable
+  - base: |
+    env:
+      AZURE_CLIENT_ID: $(AZURE_CLIENT_ID) # the recommended way to map to an env variable
+
+  - task: Gradle@2
+    inputs:
+      workingDirectory: ''
+      gradleWrapperFile: 'gradlew'
+      gradleOptions: '-Xmx3072m'
+      javaHomeOption: 'JDKVersion'
+      jdkVersionOption: '1.8'
+      jdkArchitectureOption: 'x64'
+      publishJUnitResults: true
+      testResultsFiles: '**/TEST-*.xml'
+      tasks: 'build'
