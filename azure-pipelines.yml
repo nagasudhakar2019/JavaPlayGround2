@@ -16,7 +16,7 @@ steps:
   - powershell: |
     env:
       AZURE_CLIENT_ID: $(AZURE_CLIENT_ID) # the recommended way to map to an env variable
-  - base: |
+  - bash: |
     env:
       AZURE_CLIENT_ID: $(AZURE_CLIENT_ID) # the recommended way to map to an env variable
 
