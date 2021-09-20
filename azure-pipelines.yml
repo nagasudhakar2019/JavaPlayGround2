@@ -27,7 +27,6 @@ steps:
     displayName: setting env variables for powershell
   - script: |
       echo $(AZURE_CLIENT_ID)
-      echo ${AZURE_CLIENT_ID}
     displayName: displaying azure client id $(AZURE_CLIENT_ID)
 
 #  - task: Gradle@2
