@@ -13,7 +13,7 @@ pool:
 #  AZURE_VAR1: $(PIPELINEVAR1)
 #  MY_MAPPED_ENV_VAR: somevalue
 #
-#steps:
+steps:
 #- bash: |
 #    echo "mapped value is : $MY_MAPPED_VAR"
 #  export: mappedvar = $MY_MAPPED_VAR
