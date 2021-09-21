@@ -27,7 +27,7 @@ steps:
     jdkVersionOption: '1.8'
     jdkArchitectureOption: 'x64'
     publishJUnitResults: true
-    MY_MAPPED_ENV_VAR: $(MY_MAPPED_ENV_VAR)
-    MY_MAPPED_ENV_VAR2: $(env:MY_MAPPED_ENV_VAR)
+    MY_MAPPED_ENV_VAR: $(MY_MAPPED_VAR)
+    MY_MAPPED_ENV_VAR2: $(env:MY_MAPPED_VAR)
     testResultsFiles: '**/TEST-*.xml'
     tasks: 'build'
