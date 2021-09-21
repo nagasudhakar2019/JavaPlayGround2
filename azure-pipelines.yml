@@ -20,7 +20,7 @@ steps:
 
   - task: CmdLine@2
     inputs:
-      script: 'echo $(PIPELINEVAR2) > secret.txt'
+      script: 'echo $(AppName) > secret.txt'
 
   - task: CopyFiles@2
     inputs:
