@@ -12,4 +12,21 @@ public class Configuration {
     public String getAppName(){
         return appName;
     }
+//
+//    /** The service bus request queue. */
+//    @Value("${salesforce-client-request-queue-name}")
+//    private String servicebusRequestQueue;
+//
+//    /** The service bus response queue. */
+//    @Value("${salesforce-client-response-queue-name}")
+//    private String servicebusResponseQueue;
+//
+//
+//    public String getServicebusRequestQueue(){
+//        return servicebusRequestQueue;
+//    }
+//    public String getServicebusResponseQueue(){
+//        return servicebusResponseQueue;
+//    }
+
 }

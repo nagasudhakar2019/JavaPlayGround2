@@ -27,12 +27,14 @@ class JavaPlayGroundApplicationTests {
     private int port;
     @Autowired
     private TestRestTemplate testRestTemplate;
+//    @Autowired
+//    @Qualifier("appName")
+//    private String appName;
+//    @Autowired
+//    @Qualifier("testVar")
+//    private String testVar;
     @Autowired
-    @Qualifier("appName")
-    private String appName;
-    @Autowired
-    @Qualifier("testVar")
-    private String testVar;
+        private IntegrationTestConfiguration integrationTestConfiguration;
 
     /**
      * The ResponseEntity instance
@@ -48,24 +50,6 @@ class JavaPlayGroundApplicationTests {
 ////        System.out.println("response is "+response.getBody());
 //        System.out.println("app name is: "+appName);
 //    }
-    @Test
-    public void testWelcomeMethod() throws Exception {
-        System.out.println("testVar is : "+ testVar);
-        System.out.println("PIPELINEVAR1 is : "+ System.getenv("PIPELINEVAR1"));
-        System.out.println("PIPELINEVAR2 is : "+ System.getenv("PIPELINEVAR2"));
-        System.out.println("AZURE_VAR2 is : "+ System.getenv("AZURE_VAR2"));
-        System.out.println("Env is : "+ System.getenv());
-
-//        MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
-//        params.add("applicantName", appName);
-//        System.out.println("testVar is : "+ testVar);
-//        String queryApiUrl = "http://localhost:" + port + "/javaplayground/welcomenote";
-//        String urlQuery = buildUriString(queryApiUrl, params);
-//        HttpEntity<String> requestEntity = new HttpEntity<>(null, null);
-//        ResponseEntity<String> responseEntity = testRestTemplate.exchange(urlQuery, HttpMethod.GET, requestEntity, String.class);
-//        System.out.println(responseEntity.getBody());
-        //throw new Exception("test");
-    }
 
     /**
      * build uri from url attributes and parameters
@@ -82,5 +66,12 @@ class JavaPlayGroundApplicationTests {
             uri = UriComponentsBuilder.fromHttpUrl(url).build();
         }
         return uri.toString();
+    }
+
+
+    @Test
+    public void testWelcomeMethod() throws Exception {
+        System.out.println("Environment variables: "+System.getenv());
+        System.out.println("System properties: "+System.getProperties());
     }
 }
