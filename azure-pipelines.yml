@@ -15,24 +15,12 @@ steps:
     inputs:
       azureSubscription: 'Visual Studio Enterprise Subscription(1)(ed59e941-d60f-4ba2-94d0-da768b722ff3)'
       KeyVaultName: 'nagaplaygroundKV'
-      SecretsFilter: '*'
+      SecretsFilter: 'AppName'
       RunAsPreJob: false
-
-  - task: CmdLine@2
-    inputs:
-      script: 'echo $(AppName) '
-
-  - task: CopyFiles@2
-    inputs:
-      Contents: secret.txt
-      targetFolder: '$(Build.ArtifactStagingDirectory)'
-
-  - task: PublishBuildArtifacts@1
-    inputs:
-      PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-      ArtifactName: 'drop'
-      publishLocation: 'Container'
-
+  - bash: |
+      echo "Secret Found! $MY_MAPPED_ENV_VAR"
+    env:
+      MY_MAPPED_ENV_VAR: $(AppName)
   - task: Gradle@2
     inputs:
       workingDirectory: ''
