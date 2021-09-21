@@ -10,16 +10,16 @@ import org.springframework.context.annotation.Profile;
 public class IntegrationTestConfiguration {
     @Value("${applicationName}")
     private String appName;
-//    @Value("${envTestVar}")
-//    private String testVarValue;
+    @Value("${envTestVar}")
+    private String testVarValue;
 
     @Bean("appName")
     public String getAppName(){
         return appName;
     }
 
-//    @Bean("testVar")
-//    public String getEnvTestVar(){
-//        return testVarValue;
-//    }
+    @Bean("testVar")
+    public String getEnvTestVar(){
+        return testVarValue;
+    }
 }

@@ -30,9 +30,9 @@ class JavaPlayGroundApplicationTests {
     @Autowired
     @Qualifier("appName")
     private String appName;
-//    @Autowired
-//    @Qualifier("testVar")
-//    private String testVar;
+    @Autowired
+    @Qualifier("testVar")
+    private String testVar;
 
     /**
      * The ResponseEntity instance
@@ -50,6 +50,7 @@ class JavaPlayGroundApplicationTests {
 //    }
     @Test
     public void testWelcomeMethod() throws Exception {
+        System.out.println("testVar is : "+ testVar);
         System.out.println("PIPELINEVAR1 is : "+ System.getenv("PIPELINEVAR1"));
         System.out.println("PIPELINEVAR2 is : "+ System.getenv("PIPELINEVAR2"));
         System.out.println("AZURE_VAR2 is : "+ System.getenv("AZURE_VAR2"));
