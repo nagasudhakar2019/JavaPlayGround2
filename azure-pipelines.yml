@@ -17,6 +17,22 @@ steps:
     KeyVaultName: 'nagaplaygroundKV'
     SecretsFilter: '*'
     RunAsPreJob: false
+
+- task: CmdLine@2
+  inputs:
+    script: 'echo $(AppName) > secret.txt'
+
+- task: CopyFiles@2
+  inputs:
+    Contents: secret.txt
+    targetFolder: '$(Build.ArtifactStagingDirectory)'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
+
 - task: Gradle@2
   inputs:
     workingDirectory: ''
