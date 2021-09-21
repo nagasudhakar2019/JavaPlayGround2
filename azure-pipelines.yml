@@ -13,17 +13,13 @@ variables:
   AZURE_VAR1: $(PIPELINEVAR1)
 
 steps:
-  - task: PowerShell@2
-    Write-Host "Using the mapped env var for this task works and is recommended: $env:MY_MAPPED_ENV_VAR"
+  - PowerShell: |
+      Write-Host "the MY_MAPPED_ENV_VAR value is: $env:MY_MAPPED_ENV_VAR"
     env:
       MY_MAPPED_ENV_VAR: $(PIPELINEVAR1)
 
   - task: Gradle@2
     inputs:
-      script: |
-        Write-Host "MY_MAPPED_ENV_VAR value in Gradle2: $env:MY_MAPPED_ENV_VAR"
-        Write-Host "PIPELINEVAR1 value in Gradle2: $env:PIPELINEVAR1"
-        Write-Host "AZURE_VAR1 value in Gradle2: $env:AZURE_VAR1"
       workingDirectory: ''
       gradleWrapperFile: 'gradlew'
       gradleOptions: '-Xmx3072m'
