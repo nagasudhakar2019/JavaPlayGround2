@@ -10,8 +10,7 @@ pool:
   vmImage: ubuntu-latest
 
 variables:
-  AZURE_VAR2: $(PIPELINEVAR2)
-  AZURE_VAR3:
+  AZURE_VAR1: $(PIPELINEVAR1)
 
 steps:
   - task: PowerShell@2
@@ -20,7 +19,7 @@ steps:
       script: |
         Write-Host "Using the mapped env var for this task works and is recommended: $env:MY_MAPPED_ENV_VAR"
     env:
-      MY_MAPPED_ENV_VAR: $(PIPELINEVAR2)
+      MY_MAPPED_ENV_VAR: $(PIPELINEVAR1)
 
   - task: Gradle@2
     inputs:
@@ -31,7 +30,7 @@ steps:
       jdkVersionOption: '1.8'
       jdkArchitectureOption: 'x64'
       publishJUnitResults: true
-      arguments:  --build-arg CLIENT_ID=$(AZURE_CLIENT_ID)
-      #      AZURE_VAR3: $(PIPELINEVAR2)
+      AZURE_VAR3: $(PIPELINEVAR1)
+      AZURE_VAR4: $(env:MY_MAPPED_ENV_VAR)
       testResultsFiles: '**/TEST-*.xml'
       tasks: 'build'
