@@ -8,6 +8,12 @@ import org.springframework.context.annotation.Profile;
 
 @TestConfiguration
 public class IntegrationTestConfiguration {
+    @Value("${AppName}")
+    private String appNameFromKV;
+
+    public String getAppNameFromKV(){
+        return appNameFromKV;
+    }
 //    @Value("${applicationName}")
 //    private String appName;
 //    @Value("${envTestVar}")
