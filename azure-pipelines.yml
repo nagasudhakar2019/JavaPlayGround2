@@ -9,15 +9,17 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
-#variables:
-#  AZURE_VAR2: $(PIPELINEVAR2)
+variables:
+  AZURE_VAR2: $(PIPELINEVAR2)
 
 steps:
   - bash: |
       echo $(PIPELINEVAR1)
+      echo $(PIPELINEVAR2)
+      echo $(AZURE_VAR2)
       echo "Using an input-macro works: $(PIPELINEVAR2)"
     env:
-      AZURE_VAR2: $(PIPELINEVAR2)
+      AZURE_VAR3: $(PIPELINEVAR2)
 
   - task: Gradle@2
     inputs:
