@@ -11,36 +11,36 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- task: AzureKeyVault@2
-  inputs:
-    azureSubscription: 'Visual Studio Enterprise Subscription(1)(ed59e941-d60f-4ba2-94d0-da768b722ff3)'
-    KeyVaultName: 'nagaplaygroundKV'
-    SecretsFilter: '*'
-    RunAsPreJob: true
+  - task: AzureKeyVault@2
+    inputs:
+      azureSubscription: 'Visual Studio Enterprise Subscription(1)(ed59e941-d60f-4ba2-94d0-da768b722ff3)'
+      KeyVaultName: 'nagaplaygroundKV'
+      SecretsFilter: '*'
+      RunAsPreJob: false
 
-- task: CmdLine@2
-  inputs:
-    script: 'echo $(PIPELINEVAR2) > secret.txt'
+  - task: CmdLine@2
+    inputs:
+      script: 'echo $(PIPELINEVAR2) > secret.txt'
 
-- task: CopyFiles@2
-  inputs:
-    Contents: secret.txt
-    targetFolder: '$(Build.ArtifactStagingDirectory)'
+  - task: CopyFiles@2
+    inputs:
+      Contents: secret.txt
+      targetFolder: '$(Build.ArtifactStagingDirectory)'
 
-- task: PublishBuildArtifacts@1
-  inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    ArtifactName: 'drop'
-    publishLocation: 'Container'
+  - task: PublishBuildArtifacts@1
+    inputs:
+      PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+      ArtifactName: 'drop'
+      publishLocation: 'Container'
 
-- task: Gradle@2
-  inputs:
-    workingDirectory: ''
-    gradleWrapperFile: 'gradlew'
-    gradleOptions: '-Xmx3072m'
-    javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '1.8'
-    jdkArchitectureOption: 'x64'
-    publishJUnitResults: true
-    testResultsFiles: '**/TEST-*.xml'
-    tasks: 'build'
+  - task: Gradle@2
+    inputs:
+      workingDirectory: ''
+      gradleWrapperFile: 'gradlew'
+      gradleOptions: '-Xmx3072m'
+      javaHomeOption: 'JDKVersion'
+      jdkVersionOption: '1.8'
+      jdkArchitectureOption: 'x64'
+      publishJUnitResults: true
+      testResultsFiles: '**/TEST-*.xml'
+      tasks: 'build'
