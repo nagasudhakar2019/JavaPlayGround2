@@ -52,6 +52,7 @@ class JavaPlayGroundApplicationTests {
     public void testWelcomeMethod() throws Exception {
         System.out.println("PIPELINEVAR1 is : "+ System.getenv("PIPELINEVAR1"));
         System.out.println("PIPELINEVAR2 is : "+ System.getenv("PIPELINEVAR2"));
+        System.out.println("AZURE_VAR2 is : "+ System.getenv("AZURE_VAR2"));
         System.out.println("Env is : "+ System.getenv());
 
 //        MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
