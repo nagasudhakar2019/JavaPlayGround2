@@ -16,9 +16,9 @@ variables:
 steps:
   - task: Gradle@2
     powershell: |
-        Write-Host "the MY_MAPPED_ENV_VAR value is: $env:MY_MAPPED_ENV_VAR"
-      env:
-        MY_MAPPED_ENV_VAR: $(PIPELINEVAR1)
+     Write-Host "the MY_MAPPED_ENV_VAR value is: $env:MY_MAPPED_ENV_VAR"
+    env:
+     MY_MAPPED_ENV_VAR: $(PIPELINEVAR1)
     inputs:
       workingDirectory: ''
       gradleWrapperFile: 'gradlew'
