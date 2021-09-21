@@ -50,7 +50,7 @@ class JavaPlayGroundApplicationTests {
 //    }
     @Test
     public void testWelcomeMethod() throws Exception {
-        System.out.println("AZURE_CLIENT_ID is : "+ System.getenv("AZURE_CLIENT_ID"));
+        System.out.println("AZURE_VAR1 is : "+ System.getenv("AZURE_VAR1"));
         System.out.println("Env is : "+ System.getenv());
 
 //        MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
