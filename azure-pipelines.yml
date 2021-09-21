@@ -9,13 +9,13 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
-variables:
-  AZURE_VAR1: $(PIPELINEVAR1)
+#variables:
+#  AZURE_VAR1: $(PIPELINEVAR1)
 
 steps:
   - bash: |
-      echo $AZURE_VAR1
-      echo $(AZURE_VAR1)
+#      echo $AZURE_VAR1
+#      echo $(AZURE_VAR1)
       echo $PIPELINEVAR1
   - task: Gradle@2
     inputs:
@@ -26,6 +26,6 @@ steps:
       jdkVersionOption: '1.8'
       jdkArchitectureOption: 'x64'
       publishJUnitResults: true
-      AZURE_CLIENT_ID: $(AZURE_VAR1)
+#      AZURE_CLIENT_ID: $(AZURE_VAR1)
       testResultsFiles: '**/TEST-*.xml'
       tasks: 'build'
