@@ -14,9 +14,7 @@ pool:
 
 steps:
   - bash: |
-    #      echo $AZURE_VAR1
-    #      echo $(AZURE_VAR1)
-            echo $PIPELINEVAR1
+      echo $PIPELINEVAR1
   - task: Gradle@2
     inputs:
       workingDirectory: ''
