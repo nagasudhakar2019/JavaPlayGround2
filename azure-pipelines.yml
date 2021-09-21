@@ -14,19 +14,27 @@ variables:
   AZURE_VAR3:
 
 steps:
-  - bash: |
-    env:
-      AZURE_VAR3 = $(PIPELINEVAR2)
+  #  - bash: |
+  #    env:
+  #      AZURE_VAR3 : $(PIPELINEVAR2)
+  #
+  #  - powershell: |
+  #    env:
+  #      AZURE_VAR3 : $(PIPELINEVAR2)
+  #
+  #  - script:
+  #      echo $(PIPELINEVAR1)
+  #      echo $(PIPELINEVAR2)
+  #      echo $(AZURE_VAR2)
+  #      echo $(AZURE_VAR3)
 
-  - powershell: |
+  - task: PowerShell@2
+    inputs:
+      targetType: 'inline'
+      script: |
+        Write-Host "Using the mapped env var for this task works and is recommended: $env:MY_MAPPED_ENV_VAR"
     env:
-      AZURE_VAR3 = $(PIPELINEVAR2)
-
-  - script:
-      echo $(PIPELINEVAR1)
-      echo $(PIPELINEVAR2)
-      echo $(AZURE_VAR2)
-      echo $(AZURE_VAR3)
+      MY_MAPPED_ENV_VAR: $(PIPELINEVAR2)
 
   - task: Gradle@2
     inputs:
@@ -37,6 +45,6 @@ steps:
       jdkVersionOption: '1.8'
       jdkArchitectureOption: 'x64'
       publishJUnitResults: true
-      AZURE_VAR3: $(PIPELINEVAR2)
+      #      AZURE_VAR3: $(PIPELINEVAR2)
       testResultsFiles: '**/TEST-*.xml'
       tasks: 'build'
