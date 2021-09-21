@@ -11,15 +11,22 @@ pool:
 
 variables:
   AZURE_VAR2: $(PIPELINEVAR2)
+  AZURE_VAR3
 
 steps:
   - bash: |
+    env:
+      AZURE_VAR3: $(AZURE_VAR2)
       echo $(PIPELINEVAR1)
       echo $(PIPELINEVAR2)
       echo $(AZURE_VAR2)
-      echo "Using an input-macro works: $(PIPELINEVAR2)"
+
+  - powershell: |
     env:
-      AZURE_VAR3: $(PIPELINEVAR2)
+      AZURE_VAR3: $(AZURE_VAR2)
+      echo $(PIPELINEVAR1)
+      echo $(PIPELINEVAR2)
+      echo $(AZURE_VAR2)
 
   - task: Gradle@2
     inputs:
