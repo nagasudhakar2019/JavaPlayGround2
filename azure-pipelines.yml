@@ -14,14 +14,9 @@ variables:
 
 steps:
   - task: PowerShell@2
-    inputs:
-      targetType: 'inline'
-      script: |
-        Write-Host "Using the mapped env var for this task works and is recommended: $env:MY_MAPPED_ENV_VAR"
+    Write-Host "Using the mapped env var for this task works and is recommended: $env:MY_MAPPED_ENV_VAR"
     env:
       MY_MAPPED_ENV_VAR: $(PIPELINEVAR1)
-      script: |
-        Write-Host "MY_MAPPED_ENV_VAR value : $env:MY_MAPPED_ENV_VAR"
 
   - task: Gradle@2
     inputs:
