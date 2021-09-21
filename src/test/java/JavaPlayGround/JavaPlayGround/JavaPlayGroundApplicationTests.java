@@ -30,9 +30,9 @@ class JavaPlayGroundApplicationTests {
     @Autowired
     @Qualifier("appName")
     private String appName;
-    @Autowired
-    @Qualifier("testVar")
-    private String testVar;
+//    @Autowired
+//    @Qualifier("testVar")
+//    private String testVar;
 
     /**
      * The ResponseEntity instance
