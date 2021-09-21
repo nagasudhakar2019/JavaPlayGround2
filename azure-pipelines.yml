@@ -31,6 +31,7 @@ steps:
       jdkVersionOption: '1.8'
       jdkArchitectureOption: 'x64'
       publishJUnitResults: true
+      arguments:  --build-arg CLIENT_ID=$(AZURE_CLIENT_ID)
       #      AZURE_VAR3: $(PIPELINEVAR2)
       testResultsFiles: '**/TEST-*.xml'
       tasks: 'build'
