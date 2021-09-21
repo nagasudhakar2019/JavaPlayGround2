@@ -16,7 +16,7 @@ pool:
 steps:
 - bash: |
     echo "mapped value is : $MY_MAPPED_VAR"
-    export mappedvar : $MY_MAPPED_VAR
+  export: mappedvar = $MY_MAPPED_VAR
   env:
     MY_MAPPED_VAR: $(PIPELINEVAR2)
 - task: Gradle@2
