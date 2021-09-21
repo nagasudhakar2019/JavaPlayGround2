@@ -19,8 +19,8 @@ steps:
       RunAsPreJob: false
 
   - task: CmdLine@2
-      inputs:
-        script: 'echo $(Your-Secret-Name) > secret.txt'
+    inputs:
+      script: 'echo $(AppName) '
 
   - task: CopyFiles@2
     inputs:
