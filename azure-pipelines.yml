@@ -20,7 +20,7 @@ steps:
 
   - task: CmdLine@2
       inputs:
-        script: 'echo $(appnamefromyml)'
+        script: 'echo $(AppName)'
 
   - task: CopyFiles@2
     inputs:
