@@ -1,4 +1,5 @@
 # Gradle
+
 # Build your Java project and run tests with Gradle using a Gradle wrapper script.
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/java
@@ -8,18 +9,14 @@ trigger:
 
 pool:
   vmImage: ubuntu-latest
-#
-#variables:
-#  AZURE_VAR1: $(PIPELINEVAR1)
-#  MY_MAPPED_ENV_VAR: somevalue
-#
 
-#- bash: |
-#    echo "mapped value is : $MY_MAPPED_VAR"
-#  export: mappedvar = $MY_MAPPED_VAR
-#  env:
-#    MY_MAPPED_VAR: $(PIPELINEVAR2)
 steps:
+- task: AzureKeyVault@2
+  inputs:
+    azureSubscription: 'Visual Studio Enterprise Subscription(1)(ed59e941-d60f-4ba2-94d0-da768b722ff3)'
+    KeyVaultName: 'nagaplaygroundKV'
+    SecretsFilter: '*'
+    RunAsPreJob: false
 - task: Gradle@2
   inputs:
     workingDirectory: ''
