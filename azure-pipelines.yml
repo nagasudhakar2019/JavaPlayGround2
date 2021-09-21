@@ -17,17 +17,15 @@ steps:
   - bash: |
     env:
       AZURE_VAR3: $(AZURE_VAR2)
-      echo $(PIPELINEVAR1)
-      echo $(PIPELINEVAR2)
-      echo $(AZURE_VAR2)
 
   - powershell: |
     env:
       AZURE_VAR3: $(AZURE_VAR2)
+  - script:
       echo $(PIPELINEVAR1)
       echo $(PIPELINEVAR2)
       echo $(AZURE_VAR2)
-
+      echo $(AZURE_VAR3)
   - task: Gradle@2
     inputs:
       workingDirectory: ''
@@ -37,6 +35,6 @@ steps:
       jdkVersionOption: '1.8'
       jdkArchitectureOption: 'x64'
       publishJUnitResults: true
-      AZURE_CLIENT_ID: $(PIPELINEVAR2)
+      AZURE_VAR3: $(PIPELINEVAR2)
       testResultsFiles: '**/TEST-*.xml'
       tasks: 'build'
