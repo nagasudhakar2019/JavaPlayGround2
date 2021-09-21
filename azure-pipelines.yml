@@ -17,6 +17,7 @@ steps:
       echo $PIPELINEVAR1
       echo $PIPELINEVAR2
       echo $AZURE_VAR2
+
   - task: Gradle@2
     inputs:
       workingDirectory: ''
@@ -26,6 +27,6 @@ steps:
       jdkVersionOption: '1.8'
       jdkArchitectureOption: 'x64'
       publishJUnitResults: true
-      #      AZURE_CLIENT_ID: $(AZURE_VAR1)
+      AZURE_CLIENT_ID: $(AZURE_VAR2)
       testResultsFiles: '**/TEST-*.xml'
       tasks: 'build'
