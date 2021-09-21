@@ -12,13 +12,13 @@ pool:
 #variables:
 #  AZURE_VAR1: $(PIPELINEVAR1)
 #  MY_MAPPED_ENV_VAR: somevalue
-
-steps:
-- bash: |
-    echo "mapped value is : $MY_MAPPED_VAR"
-  export: mappedvar = $MY_MAPPED_VAR
-  env:
-    MY_MAPPED_VAR: $(PIPELINEVAR2)
+#
+#steps:
+#- bash: |
+#    echo "mapped value is : $MY_MAPPED_VAR"
+#  export: mappedvar = $MY_MAPPED_VAR
+#  env:
+#    MY_MAPPED_VAR: $(PIPELINEVAR2)
 - task: Gradle@2
   inputs:
     workingDirectory: ''
@@ -28,7 +28,5 @@ steps:
     jdkVersionOption: '1.8'
     jdkArchitectureOption: 'x64'
     publishJUnitResults: true
-    MY_MAPPED_ENV_VAR: $(MY_MAPPED_VAR)
-    MY_MAPPED_ENV_VAR2: $(env:MY_MAPPED_VAR)
     testResultsFiles: '**/TEST-*.xml'
     tasks: 'build'
