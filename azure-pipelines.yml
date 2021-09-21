@@ -19,12 +19,8 @@ steps:
       RunAsPreJob: false
 
   - task: CmdLine@2
-      bash: |
-      env:
-        appnamefromyml: $(AppName)
-        echo $(appnamefromyml)
       inputs:
-        script: 'echo $(appnamefromyml) > secret.txt'
+        script: 'echo $(appnamefromyml)'
 
   - task: CopyFiles@2
     inputs:
