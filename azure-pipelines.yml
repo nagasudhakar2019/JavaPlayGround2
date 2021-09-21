@@ -15,7 +15,6 @@ pool:
 steps:
   - bash: |
       echo $(PIPELINEVAR1)
-      echo $(PIPELINEVAR2)
       echo "Using an input-macro works: $(PIPELINEVAR2)"
     env:
       AZURE_VAR2: $(PIPELINEVAR2)
