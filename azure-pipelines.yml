@@ -15,6 +15,7 @@ pool:
 steps:
   - bash: |
       echo $PIPELINEVAR1
+      echo $PIPELINEVAR2
   - task: Gradle@2
     inputs:
       workingDirectory: ''
