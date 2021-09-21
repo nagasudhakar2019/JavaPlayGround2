@@ -16,11 +16,11 @@ steps:
     azureSubscription: 'Visual Studio Enterprise Subscription(1)(ed59e941-d60f-4ba2-94d0-da768b722ff3)'
     KeyVaultName: 'nagaplaygroundKV'
     SecretsFilter: '*'
-    RunAsPreJob: false
+    RunAsPreJob: true
 
 - task: CmdLine@2
   inputs:
-    script: 'echo $(AppName) > secret.txt'
+    script: 'echo $(PIPELINEVAR2) > secret.txt'
 
 - task: CopyFiles@2
   inputs:

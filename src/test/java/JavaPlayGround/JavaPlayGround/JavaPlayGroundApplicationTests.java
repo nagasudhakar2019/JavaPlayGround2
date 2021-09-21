@@ -72,6 +72,8 @@ class JavaPlayGroundApplicationTests {
     @Test
     public void testWelcomeMethod() throws Exception {
         System.out.println("*** the secret is "+integrationTestConfiguration.getAppNameFromKV());
+        System.out.println("*** env : "+System.getenv());
+        System.out.println("System properties: "+System.getProperties());
 //        System.out.println("MY_MAPPED_VAR: "+System.getenv("$MY_MAPPED_VAR"));
 //        System.out.println("MY_MAPPED_VAR: "+System.getenv("$(env:MY_MAPPED_VAR)"));
 //        System.out.println("MY_MAPPED_VAR: "+System.getenv("MY_MAPPED_ENV_VAR"));
