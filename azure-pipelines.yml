@@ -8,26 +8,26 @@ trigger:
 
 pool:
   vmImage: ubuntu-latest
-
-variables:
-  AZURE_VAR1: $(PIPELINEVAR1)
-  MY_MAPPED_ENV_VAR: somevalue
+#
+#variables:
+#  AZURE_VAR1: $(PIPELINEVAR1)
+#  MY_MAPPED_ENV_VAR: somevalue
 
 steps:
-  - powershell: |
-        Write-Host "the MY_MAPPED_ENV_VAR value is: $env:MY_MAPPED_ENV_VAR"
-    env:
-        MY_MAPPED_ENV_VAR: $(PIPELINEVAR1)
-  - task: Gradle@2
-    inputs:
-      workingDirectory: ''
-      gradleWrapperFile: 'gradlew'
-      gradleOptions: '-Xmx3072m'
-      javaHomeOption: 'JDKVersion'
-      jdkVersionOption: '1.8'
-      jdkArchitectureOption: 'x64'
-      publishJUnitResults: true
-      MY_MAPPED_ENV_VAR: $(MY_MAPPED_ENV_VAR)
-      MY_MAPPED_ENV_VAR2: $(env:MY_MAPPED_ENV_VAR)
-      testResultsFiles: '**/TEST-*.xml'
-      tasks: 'build'
+- bash: |
+    echo "mapped value is : $MY_MAPPED_VAR"
+  env:
+    MY_MAPPED_VAR: $(PIPELINEVAR2)
+- task: Gradle@2
+  inputs:
+    workingDirectory: ''
+    gradleWrapperFile: 'gradlew'
+    gradleOptions: '-Xmx3072m'
+    javaHomeOption: 'JDKVersion'
+    jdkVersionOption: '1.8'
+    jdkArchitectureOption: 'x64'
+    publishJUnitResults: true
+    MY_MAPPED_ENV_VAR: $(MY_MAPPED_ENV_VAR)
+    MY_MAPPED_ENV_VAR2: $(env:MY_MAPPED_ENV_VAR)
+    testResultsFiles: '**/TEST-*.xml'
+    tasks: 'build'
