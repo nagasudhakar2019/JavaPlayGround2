@@ -11,7 +11,7 @@ pool:
 
 variables:
   AZURE_VAR2: $(PIPELINEVAR2)
-  AZURE_VAR3
+  AZURE_VAR3:
 
 steps:
   - bash: |
