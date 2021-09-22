@@ -11,10 +11,10 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-  - powershell: |
-    env:
-      MY_MAPPED_ENV_VAR: $(secretval1)
-      Write-Host "This works: $env:MY_MAPPED_ENV_VAR"
+  powershell: |
+  env:
+    MY_MAPPED_ENV_VAR: $(secretval1)
+    Write-Host "This works: $env:MY_MAPPED_ENV_VAR"
 
 #  - task: Gradle@2
 #    inputs:
