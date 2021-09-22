@@ -20,11 +20,9 @@ steps:
       Write-Host "VAR1 is $env:VAR1"
     env:
       MY_MAPPED_ENV_VAR: $(secretval1)
-  - powershell: |
-      Write-Host "MY_MAPPED_ENV_VAR is $env:MY_MAPPED_ENV_VAR"
-      Write-Host "gloabal_var1 is $env:VAR1"
 
-#  - task: Gradle@2
+  - task: Gradle@2
+    Write-Host "This works $env:VAR1"
 #    inputs:
 #      workingDirectory: ''
 #      gradleWrapperFile: 'gradlew'
