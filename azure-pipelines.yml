@@ -16,7 +16,7 @@ variables:
 steps:
   - powershell: |
       Write-Host "This works $env:MY_MAPPED_ENV_VAR"
-      Write-Host "##vso[task.setvariable variable=gloabal_var1]$env:MY_MAPPED_ENV_VAR"
+      Write-Host "##vso[task.setvariable variable=gloabal_var1]crused apples"
     env:
       MY_MAPPED_ENV_VAR: $(secretval1)
   - powershell: |
