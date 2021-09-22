@@ -10,22 +10,27 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
+variables:
+  gloabal_var1 : defaultvalue
+
 steps:
   - powershell: |
       Write-Host "This works $env:MY_MAPPED_ENV_VAR"
+      Write-Host "##vso[task.setvariable variable=gloabal_var1]$env:MY_MAPPED_ENV_VAR"
     env:
       MY_MAPPED_ENV_VAR: $(secretval1)
   - powershell: |
       Write-Host "print 2 $env:MY_MAPPED_ENV_VAR"
+      Write-Host "print 2 $gloabal_var1"
 
-  - task: Gradle@2
-    inputs:
-      workingDirectory: ''
-      gradleWrapperFile: 'gradlew'
-      gradleOptions: '-Xmx3072m'
-      javaHomeOption: 'JDKVersion'
-      jdkVersionOption: '1.8'
-      jdkArchitectureOption: 'x64'
-      publishJUnitResults: true
-      testResultsFiles: '**/TEST-*.xml'
-      tasks: 'build'
+#  - task: Gradle@2
+#    inputs:
+#      workingDirectory: ''
+#      gradleWrapperFile: 'gradlew'
+#      gradleOptions: '-Xmx3072m'
+#      javaHomeOption: 'JDKVersion'
+#      jdkVersionOption: '1.8'
+#      jdkArchitectureOption: 'x64'
+#      publishJUnitResults: true
+#      testResultsFiles: '**/TEST-*.xml'
+#      tasks: 'build'
