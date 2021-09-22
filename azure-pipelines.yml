@@ -12,9 +12,9 @@ pool:
 
 steps:
   - powershell: |
+      Write-Host "This works $env:MY_MAPPED_ENV_VAR"
     env:
       MY_MAPPED_ENV_VAR: $(secretval1)
-        Write-Host "This works $env:MY_MAPPED_ENV_VAR"
 
 #  - task: Gradle@2
 #    inputs:
