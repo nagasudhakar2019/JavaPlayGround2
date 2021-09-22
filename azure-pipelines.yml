@@ -11,16 +11,12 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-  - task: AzureKeyVault@2
-    inputs:
-      azureSubscription: 'Visual Studio Enterprise Subscription(1)(ed59e941-d60f-4ba2-94d0-da768b722ff3)'
-      KeyVaultName: 'nagaplaygroundKV'
-      SecretsFilter: 'AppName'
-      RunAsPreJob: false
-  - bash: |
-      echo "Secret Found! $MY_MAPPED_ENV_VAR"
+  - powershell: |
     env:
-      MY_MAPPED_ENV_VAR: $(AppName)
+      MY_MAPPED_ENV_VAR: $(secretval1)
+      # Using the mapped env var:
+      Write-Host "This works: $env:MY_MAPPED_ENV_VAR"
+
   - task: Gradle@2
     inputs:
       workingDirectory: ''
