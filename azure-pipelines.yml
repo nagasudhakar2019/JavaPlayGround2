@@ -10,8 +10,8 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
-variables:
-  gloabal_var1 : defaultvalue
+#variables:
+#  gloabal_var1 : defaultvalue
 
 steps:
   - powershell: |
@@ -20,8 +20,8 @@ steps:
     env:
       MY_MAPPED_ENV_VAR: $(secretval1)
   - powershell: |
-      Write-Host "print 2 $env:MY_MAPPED_ENV_VAR"
-      Write-Host "print 2 $gloabal_var1"
+      Write-Host "MY_MAPPED_ENV_VAR is $env:MY_MAPPED_ENV_VAR"
+      Write-Host "gloabal_var1 is $env:gloabal_var1"
 
 #  - task: Gradle@2
 #    inputs:
