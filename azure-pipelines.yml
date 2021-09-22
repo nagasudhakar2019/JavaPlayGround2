@@ -36,4 +36,4 @@ steps:
   - powershell: |
       Write-Host "MY_MAPPED_ENV_VAR is $env:MY_MAPPED_ENV_VAR"
       Write-Host "VAR1 is $env:VAR1"
-      Write-Host "VAR1 is $env:VAR2"
+      Write-Host "VAR2 is $env:VAR2"
