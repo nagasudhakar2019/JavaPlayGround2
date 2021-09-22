@@ -22,7 +22,6 @@ steps:
       MY_MAPPED_ENV_VAR: $(secretval1)
 
   - task: Gradle@2
-    Write-Host "VAR1 value is $env:VAR1"
     inputs:
       workingDirectory: ''
       gradleWrapperFile: 'gradlew'
@@ -32,4 +31,9 @@ steps:
       jdkArchitectureOption: 'x64'
       publishJUnitResults: true
       testResultsFiles: '**/TEST-*.xml'
+      VAR2: $(VAR1)
       tasks: 'build'
+  - powershell: |
+      Write-Host "MY_MAPPED_ENV_VAR is $env:MY_MAPPED_ENV_VAR"
+      Write-Host "VAR1 is $env:VAR1"
+      Write-Host "VAR1 is $env:VAR2"
