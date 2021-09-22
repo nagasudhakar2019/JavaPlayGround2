@@ -19,8 +19,6 @@ steps:
       Write-Host "print 2 $env:MY_MAPPED_ENV_VAR"
 
   - task: Gradle@2
-    script: |
-      "ehco $env:MY_MAPPED_ENV_VAR"
     inputs:
       workingDirectory: ''
       gradleWrapperFile: 'gradlew'
