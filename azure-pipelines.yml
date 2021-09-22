@@ -22,14 +22,14 @@ steps:
       MY_MAPPED_ENV_VAR: $(secretval1)
 
   - task: Gradle@2
-    Write-Host "This works $env:VAR1"
-#    inputs:
-#      workingDirectory: ''
-#      gradleWrapperFile: 'gradlew'
-#      gradleOptions: '-Xmx3072m'
-#      javaHomeOption: 'JDKVersion'
-#      jdkVersionOption: '1.8'
-#      jdkArchitectureOption: 'x64'
-#      publishJUnitResults: true
-#      testResultsFiles: '**/TEST-*.xml'
-#      tasks: 'build'
+    Write-Host "VAR1 value is $env:VAR1"
+    inputs:
+      workingDirectory: ''
+      gradleWrapperFile: 'gradlew'
+      gradleOptions: '-Xmx3072m'
+      javaHomeOption: 'JDKVersion'
+      jdkVersionOption: '1.8'
+      jdkArchitectureOption: 'x64'
+      publishJUnitResults: true
+      testResultsFiles: '**/TEST-*.xml'
+      tasks: 'build'
