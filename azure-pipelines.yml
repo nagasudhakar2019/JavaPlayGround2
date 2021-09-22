@@ -16,12 +16,13 @@ pool:
 steps:
   - powershell: |
       Write-Host "This works $env:MY_MAPPED_ENV_VAR"
-      Write-Host "##vso[task.setvariable variable=gloabal_var1]crused apples"
+      Write-Host "##vso[task.setvariable variable=VAR1]crused apples"
+      Write-Host "VAR1 is $env:VAR1"
     env:
       MY_MAPPED_ENV_VAR: $(secretval1)
   - powershell: |
       Write-Host "MY_MAPPED_ENV_VAR is $env:MY_MAPPED_ENV_VAR"
-      Write-Host "gloabal_var1 is $env:gloabal_var1"
+      Write-Host "gloabal_var1 is $env:VAR1"
 
 #  - task: Gradle@2
 #    inputs:
