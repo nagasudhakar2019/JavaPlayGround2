@@ -21,11 +21,11 @@ steps:
     env:
       MY_MAPPED_ENV_VAR: $(PIPELINEVAR2)
 
-  -powershell: |
-    New-Item -Path .\test.txt
-    Set-Content -Path .\test.txt -Value 'Hello, Azure'
-    $P = Get-Content -Path .\test.txt
-    Out-Printer -InputObject $P
+  - powershell: |
+      New-Item -Path .\test.txt
+      Set-Content -Path .\test.txt -Value 'Hello, Azure'
+      $P = Get-Content -Path .\test.txt
+      Out-Printer -InputObject $P
 
 #  - task: Gradle@2
 #    inputs:
