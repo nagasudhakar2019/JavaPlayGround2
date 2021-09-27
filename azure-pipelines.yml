@@ -26,7 +26,8 @@ steps:
       Set-Content -Path .\test.txt -Value 'Hello, Welcome to Azure'
       $P = Get-Content -Path .\test.txt
       $curDir = Get-Location
-      $fileLocation = $curDir+"/test.txt"
+      $fileName = "/test.txt"
+      $fileLocation = $curDir+@fileName
       Write-Host "file value is $P"
       Write-Host "file location is $fileLocation"
       Write-Host "##vso[task.setvariable variable=AppName]$fileLocation"
