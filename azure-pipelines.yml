@@ -16,18 +16,20 @@ pool:
 steps:
   - powershell: |
       Write-Host "This works $env:MY_MAPPED_ENV_VAR"
-      Write-Host "##vso[task.setvariable variable=AppName]$env:MY_MAPPED_ENV_VAR"
-      Write-Host "AppName is $env:VAR1"
+#      Write-Host "##vso[task.setvariable variable=AppName]$env:MY_MAPPED_ENV_VAR"
+#      Write-Host "AppName is $env:VAR1"
     env:
       MY_MAPPED_ENV_VAR: $(PIPELINEVAR2)
 
   - powershell: |
       New-Item -Path .\test.txt
-      Set-Content -Path .\test.txt -Value 'Hello, Azure'
+      Set-Content -Path .\test.txt -Value 'Hello, Welcome to Azure'
       $P = Get-Content -Path .\test.txt
       $curDir = Get-Location
+      $fileLocation = $curDir+"/test.txt"
       Write-Host "file value is $P"
-      Write-Host "current location is $curDir"
+      Write-Host "file location is $fileLocation"
+      Write-Host "##vso[task.setvariable variable=AppName]$fileLocation"
 
 #  - task: Gradle@2
 #    inputs:
