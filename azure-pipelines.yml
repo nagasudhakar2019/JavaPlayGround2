@@ -25,7 +25,8 @@ steps:
       New-Item -Path .\test.txt
       Set-Content -Path .\test.txt -Value 'Hello, Azure'
       $P = Get-Content -Path .\test.txt
-      Out-Printer -InputObject $P
+      Write-Host "file value is $env:P"
+      Write-Host "file value is $P"
 
 #  - task: Gradle@2
 #    inputs:
