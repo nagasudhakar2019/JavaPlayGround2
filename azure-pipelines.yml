@@ -27,7 +27,7 @@ steps:
       $P = Get-Content -Path .\test.txt
       $FilePath1 = $P.BaseName
       Write-Host "file value is $P"
-      Write-Host "$FilePath1 full path value is $$FilePath1"
+      Write-Host "$FilePath1 full path value is $FilePath1"
 
 #  - task: Gradle@2
 #    inputs:
