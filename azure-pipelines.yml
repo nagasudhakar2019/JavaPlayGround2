@@ -21,18 +21,24 @@ steps:
     env:
       MY_MAPPED_ENV_VAR: $(PIPELINEVAR2)
 
-  - task: Gradle@2
-    inputs:
-      workingDirectory: ''
-      gradleWrapperFile: 'gradlew'
-      gradleOptions: '-Xmx3072m'
-      javaHomeOption: 'JDKVersion'
-      jdkVersionOption: '1.8'
-      jdkArchitectureOption: 'x64'
-      publishJUnitResults: true
-      testResultsFiles: '**/TEST-*.xml'
-      tasks: 'build'
-  - powershell: |
-      Write-Host "MY_MAPPED_ENV_VAR is $env:MY_MAPPED_ENV_VAR"
-      Write-Host "VAR1 is $env:VAR1"
-      Write-Host "VAR2 is $env:VAR2"
+  -powershell: |
+    New-Item -Path .\test.txt
+    Set-Content -Path .\test.txt -Value 'Hello, Azure'
+    $P = Get-Content -Path .\test.txt
+    Out-Printer -InputObject $P
+
+#  - task: Gradle@2
+#    inputs:
+#      workingDirectory: ''
+#      gradleWrapperFile: 'gradlew'
+#      gradleOptions: '-Xmx3072m'
+#      javaHomeOption: 'JDKVersion'
+#      jdkVersionOption: '1.8'
+#      jdkArchitectureOption: 'x64'
+#      publishJUnitResults: true
+#      testResultsFiles: '**/TEST-*.xml'
+#      tasks: 'build'
+#  - powershell: |
+#      Write-Host "MY_MAPPED_ENV_VAR is $env:MY_MAPPED_ENV_VAR"
+#      Write-Host "VAR1 is $env:VAR1"
+#      Write-Host "VAR2 is $env:VAR2"
