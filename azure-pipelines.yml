@@ -25,9 +25,9 @@ steps:
       New-Item -Path .\test.txt
       Set-Content -Path .\test.txt -Value 'Hello, Azure'
       $P = Get-Content -Path .\test.txt
-      $FilePath1 = $P.BaseName
+      $curDir = Get-Location
       Write-Host "file value is $P"
-      Write-Host "$FilePath1 full path value is $FilePath1"
+      Write-Host "current location is $curDir"
 
 #  - task: Gradle@2
 #    inputs:
