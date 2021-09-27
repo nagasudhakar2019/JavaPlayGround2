@@ -31,17 +31,17 @@ steps:
       Write-Host "file location is $curDir$fileName"
       Write-Host "##vso[task.setvariable variable=AppName]$curDir$fileName"
 
-#  - task: Gradle@2
-#    inputs:
-#      workingDirectory: ''
-#      gradleWrapperFile: 'gradlew'
-#      gradleOptions: '-Xmx3072m'
-#      javaHomeOption: 'JDKVersion'
-#      jdkVersionOption: '1.8'
-#      jdkArchitectureOption: 'x64'
-#      publishJUnitResults: true
-#      testResultsFiles: '**/TEST-*.xml'
-#      tasks: 'build'
+  - task: Gradle@2
+    inputs:
+      workingDirectory: ''
+      gradleWrapperFile: 'gradlew'
+      gradleOptions: '-Xmx3072m'
+      javaHomeOption: 'JDKVersion'
+      jdkVersionOption: '1.8'
+      jdkArchitectureOption: 'x64'
+      publishJUnitResults: true
+      testResultsFiles: '**/TEST-*.xml'
+      tasks: 'build'
 #  - powershell: |
 #      Write-Host "MY_MAPPED_ENV_VAR is $env:MY_MAPPED_ENV_VAR"
 #      Write-Host "VAR1 is $env:VAR1"
