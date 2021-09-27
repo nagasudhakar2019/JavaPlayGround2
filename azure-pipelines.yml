@@ -27,7 +27,6 @@ steps:
       $P = Get-Content -Path .\test.txt
       $curDir = Get-Location
       $fileName = "/test.txt"
-#      $fileLocation = $curDir+$fileName
       Write-Host "file value is $P"
       Write-Host "file location is $curDir$fileName"
       Write-Host "##vso[task.setvariable variable=AppName]$curDir$fileName"
